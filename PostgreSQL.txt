@@ -1,0 +1,32 @@
+CREATE DATABASE cadastro
+    WITH 
+    OWNER = postgres
+    ENCODING = 'UTF8'
+    LC_COLLATE = 'Portuguese_Brazil.1252'
+    LC_CTYPE = 'Portuguese_Brazil.1252'
+    TABLESPACE = pg_default
+    CONNECTION LIMIT = -1;
+
+
+CREATE TABLE IF NOT EXISTS public.usuario
+(
+    id bigint NOT NULL DEFAULT nextval('usersequence'::regclass),
+    name character varying COLLATE pg_catalog."default" NOT NULL,
+    email character varying COLLATE pg_catalog."default",
+    idade integer,
+    CONSTRAINT usuario_pkey PRIMARY KEY (id),
+    CONSTRAINT usuario_id_key UNIQUE (id)
+)
+
+CREATE TABLE IF NOT EXISTS public.telefone
+(
+    id bigint NOT NULL DEFAULT nextval('telefonesequence'::regclass),
+    numero character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    tipo character varying(255) COLLATE pg_catalog."default" NOT NULL,
+    usuario_id bigint NOT NULL,
+    CONSTRAINT telefone_id PRIMARY KEY (id),
+    CONSTRAINT telefone_usuario_id_fkey FOREIGN KEY (usuario_id)
+        REFERENCES public.usuario (id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
+)
