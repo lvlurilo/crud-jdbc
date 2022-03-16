@@ -72,9 +72,9 @@ public class AppTest {
     		
     		UsuarioDAO usuarioDao = new UsuarioDAO();
     		
-    		Usuario usuario = usuarioDao.read(1L);
+    		Usuario usuario = usuarioDao.read(10L);
     		
-			usuario.setName("Murilo Carvalho");
+			usuario.setName("teste");
 			
 			usuarioDao.update(usuario);
 			
@@ -91,7 +91,7 @@ public class AppTest {
     		
     		UsuarioDAO usuarioDao = new UsuarioDAO();
     		
-    		usuarioDao.delete(1L);
+    		usuarioDao.delete(10L);
     		
 			
 		} catch (Exception e) {

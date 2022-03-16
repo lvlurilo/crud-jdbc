@@ -6,7 +6,7 @@ import java.sql.DriverManager;
 public class SingleConnect {
 	// conexoes no BD sao feitas 1x apenas, o que é aberto e fechado sao sessoes
 	private static String url = "jdbc:postgresql://localhost:5432/cadastro"; //padrao para conexao local postgre 
-	private static String password = "";  //senha do bd
+	private static String password = "admin";  //senha do bd
 	private static String user = "postgres"; // owner do bd
 	private static Connection connection = null;  // classe de conexao 
 	
